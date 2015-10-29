@@ -106,9 +106,19 @@ Nas ilustrações acima as condições de contorno são: Força de 1000 N (valor
  
 \textbf{Deformação}:
 
-IMG
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/deformacao_peso100n.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
 
-IMG
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/vonmises_100n.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
 
 Como podemos ver o valor máximo da deformação é da ordem de 10e-5m o que significa que nessas condições não ocorre uma deformação expressiva no carrinho. Os valores da tensão de Von Mises não apresentam valores que possam oferecer um real risco a integridade do material pois apresentam valores da ordem de 10e3 menores que o valor da tensão de ruptura do material.
  
@@ -125,18 +135,28 @@ Os motores elétricos são divididos basicamente em: motores de corrente alterna
 
 Além da alimentação dos motores de corrente contínua, outras vantagens em sua utilização, são devido: (BRAGA, 2006).
 \begin{itemize}
-\item a velocidade do motor ser ajustada a partir de um potenciômetro, realizando a variação da tentão aplicada sobre o motor;
-\item o sentido de rotação do motor pode ser alterado a partir da alteração da polaridade da tensão aplicada ao motor;
-\item ao controle da aceleração e desaceleração do motor promovendo uma resposta no tempo ou para suavizar o funcionamento deste;
-\item a possibilidade de controle do torque a partir da variação da corrente aplicada no motor;
-\item a apresentarem uma resposta rápida, ou seja, quando submetidos a voltagens elevadas acelera rapidamente.
+	\item a velocidade do motor ser ajustada a partir de um potenciômetro, realizando a variação da tentão aplicada sobre o motor;
+	\item o sentido de rotação do motor pode ser alterado a partir da alteração da polaridade da tensão aplicada ao motor;
+	\item ao controle da aceleração e desaceleração do motor promovendo uma resposta no tempo ou para suavizar o funcionamento deste;
+	\item a possibilidade de controle do torque a partir da variação da corrente aplicada no motor;
+	\item a apresentarem uma resposta rápida, ou seja, quando submetidos a voltagens elevadas acelera rapidamente.
 \end{itemize}
 
 Os motores utilizado no alfa são motores dc, com caixa de redução 1:48, e eixo duplo, a escolha desse motor ocorreu devido aos fatores apresentados acima. Abaixo será apresentado uma tabela com as especificações do motor que será utilizado.
 
-IMG
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/tensao.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
 
-IMG
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/motor.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
 
 \subsection{Alimentação}
 
@@ -146,7 +166,12 @@ As pilhas podem ser divididas em recarregáveis e não recarregáveis. As pilhas
 
 Além de que a tensão de pilhas cai de acordo com a capacidade é utilizada, fazendo com que a placa desligasse antes da pilha estar totalmente carregada pelo fato da tensão não estar adequada, a figura abaixo ilustra (para uma pilha AA “heavy duty”).
 
-IMG
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/volt_vs_cap.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
 
 As baterias encontradas no mercado podem ser de vários tipos, as mais comuns são as de Ion-Lítio, a maior vantagem delas é o seu fator energético em função do peso ser alto, elas costumam ser bem mais leves que outras baterias recarregáveis de mesmo tamanho (geralmente 150 watt-hora para cada quilo de bateria), além de serem bem mais baratas e seguras que outras baterias, como as de chumbo-ácido.
 
@@ -164,7 +189,137 @@ O princípio de usar esteiras neste carrinho é que este poderá passar por loca
 
 Segue um diagrama de sequência com a visão geral de como o robô Alfa irá funcionar e da comunicação entre os sistemas:
 
-IMG
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/diagrama_de_sequencia.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
+
+\subsection{Configuração Wi-Fi}
+
+Para o desenvolvimento da comunicação entre o robô educacional e o aplicativo em dispositivos móveis ANDROID escolheu-se a aplicação da tecnologia de comunicação wi-fi, de modo que é acoplado ao Raspberry Pi um dongle wi-fi (adaptador USB que adiciona funcionalidades à dispositivos, neste caso o adaptador wi-fi permite interação com este tipo de comunicação) para que se possa configurar propriamente o Raspberry Pi como um ponto de acesso de rede (Access Point ou Hotspot).
+
+A tecnologia wi-fi foi escolhida por apresentar parâmetros que condizem com as necessidades do projeto (largura de banda – aproximadamente 22MHz – condizente com o requerido, alcance de aproximadamente 100 metros, menor latência, maior segurança, taxa de transmissão de bits – aproximadamente 600 Mbps - satisfatória para o projeto), outras tecnologias como por exemplo bluetooh, ZigBee e UWB não foram utilizadas por apresentarem características inferiores as desejadas para o projeto, inaplicabilidade ou por capacidade superior a requerida, respectivamente (IECON). Para a configuração do Raspberry Pi como Access Point instalou-se e configurou-se o protocolo de serviço DHCP (onde o mesmo utiliza um modelo cliente-servidor, gerenciando automaticamente os endereços de IP, gateway padrão, máscara de sub-rede e outros parâmetros da conexão dos dispositivos conectados ao access point), bem como instalou-se e configurou-se o Hostapd, que se trata de um programa no “user-space” que é executado em plano de fundo utilizado que realiza a autenticação de servidores e permite a criação de pontos de acesso (WIRELESS WIKI), neste caso, para o controle do robô. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/adaptador_wifi.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
+
+\subsection{Alimentação}
+
+Tendo em vista a necessidade de autonomia do robô um dos pontos fundamentais a serem desenvolvidos diz respeito a alimentação do Raspberry Pi. Para este projeto, inicialmente, decidiu-se alimentar o Raspberry Pi utilizando 6 (seis) pilhas do tipo AAA (que geram uma tensão igual a 9V) ou uma bateria 9V utilizando um circuito regulador de tensão implementando-se um CI7805 que fornece uma tensão fixa de saída igual a 5V e corrente máxima de 1.5 A o que é ideal para alimentação do Raspberry Pi (SPARKFUN).
+
+Além disso utiliza-se dois capacitores, um capacitor em paralelo com a entrada do regulador de tensão e um outro capacitor em paralelo com a saída do regulador de tensão afim de evitar variações (ripples) no sinal de alimentação na entrada do regulador e na saída do regulador, respectivamente. É importante mencionar a implementação dos diodos para proteção contra correntes de polarização reversa. Para implantação deste circuito buscou-se a solução mais simples com melhor eficiência, atendendo os requisitos do projeto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/esquematico_regulador.eps}
+    \caption{Circuito regulador de tensão proposto para alimentação do Raspberry Pi.}
+    \label{fig:catia01}
+\end{figure}
+
+\subsection{Sensoriamento}
+
+Em termos de interação com o ambiente na resposta do robô aos comandos fornecidos pela estrutura lógica de blocos do aplicativo, inicialmente realiza-se o sensoriamento utilizando-se um sensor de ultrassom na análise da distância do robô com relação aos objetos ao seu redor. Em princípio, implementa-se o sensoriamento de distância utilizando o modelo HC-RS04 que apresenta especificações de funcionamento (medição de distância de 2cm a 500cm, resolução de 0.3cm, frequência de 40kHz) e alimentação (5V DC) satisfatórias para a viabilização deste aspecto do projeto (MICROPIK).
+
+Umas das terminações do sensor de ultrassom emite um pulso de duração de 10 microssegundos (pino trig é ativado), o sinal é refletido no objeto mais próximo e retorna para a segunda terminação onde aciona um de seus pinos (echo) sinalizando a chegada do sinal, o período de resposta (processamento) do sensor é igual a 50ms o que não leva a atrasos a serem considerados neste projeto. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/pinos_ultrassom.eps}
+    \caption{Sensor de Ultrassom HC-RS04 e respectivos pinos.}
+    \label{fig:catia01}
+\end{figure}
+
+No que diz respeito a programação deste sensor é importante ressaltar que se deve considerar que o pulso emitido pelo sensor percorre duas vezes a distância entre o robô e o objeto, desta forma deve-se considerar a seguinte fórmula (levando-se em consideração a velocidade do som igual a 340m/s):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/distancia.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
+
+Para implementação do sensor de ultrassom HC-RS04 deve-se considerar um divisor de tensão para o pino echo uma vez que este pino trabalha com uma tensão igual a 3.3V. Dessa maneira considerando um resistor  (que também atua como um resistor e pull-down), tem-se:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/vout.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
+
+Dessa maneira utilizou-se um valor comercial disponível mais próximo igual a 680Ω. Pode-se observar o esquemático relativo a implementação do sensor de ultrassom a seguir:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/esquematico_ultrassom.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
+
+O código referente a programação do sensor de distância ultrassom, em linguagem Python, está em Anexo A a este relatório.
+
+\subsection{Comunicação Robô}
+
+A comunicação entre o robô e o aplicativo mobile foi realizada através de uma comunicação do tipo Cliente/Servidor utilizando a API de Sockets em python, onde o servidor foi implementado no Raspberry PI, e o cliente foi configurado no aplicativo. Foi utilizado o protocolo TCP/IP na realização da comunicação, esse protocolo foi utilizado por ser atualmente o mais completo e aceito protocolo disponível, além de todos os sistemas operacionais modernos oferecerem suporte para o mesmo. Além disso o protocolo TCP/IP é do tipo stream, o que estabelece algumas características de transmissão, como confiabilidade, ordem, controle de fluxo e bidirecionalidade.
+
+A seguir tem-se um diagrama ilustrando as funções utilizadas na implementação da comunicação cliente servidor utilizando o protocolo TCP/IP:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/diagrama_socket.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
+
+\subsection{Execução dos Blocos Lógicos}
+
+As tarefas a serem executadas pelo robô são enviadas através de um arquivo do tipo JSON (Java Script Object Notation), onde o mesmo é recebido pelo servidor através da comunicação via sockets e interpretado a fim de executar as solicitações do usuário através da lógica de blocos. Para isso são passadas as chamadas das funções referentes a cada bloco lógico através do arquivo JSON, onde essas funções são lidas e interpretadas no Raspberry PI, com o intuito de ativar e controlar os motores do robô de acordo com as tarefas referentes a cada bloco lógico.
+
+Os motores do robô são acionados e controlados utilizando 4 pinos GPIO do Raspberry PI e uma Ponte H. De modo que o Raspberry PI é responsável por enviar sinais PWM (configurados utilizando funções em python) para a Ponte H, referentes a velocidade e a direção que se deseja passar ao robô na execução de determinado bloco lógico. A Ponte H é responsável por inverter o sentido de rotação dos motores quando necessário, e também por sincronizar a inicialização e rotação dos mesmos.
+
+\subsection{Ponte H}
+
+A ponte H é um circuito designado para controlar o sentido e a velocidade dos motores DC do robô. Por ser um circuito do tipo chopper E, o mesmo circuito converte corrente contínua fixa em uma tensão de corrente contínua variável. Dessa forma, pode-se determinar o sentido da corrente e a polaridade da tensão. A ponte H é feita de componentes como Switches, Relays e Mosfets.
+
+A figura abaixo mostra uma ponte H módulo L298N que foi utilizada no projeto. Este dispositivo foi utilizado considerando sua versatilidade e simplicidade de implementação, além de sua funcionalidade, como o controle de vários motores simultaneamente. Uma outra vantagem é o fato do L298N poder controlar as altas correntes dos motores, ela literalmente faz uma ‘ponte’ entre as correntes baixas do circuito lógico do Raspberry PI e dos motores DC utilizados para movimentar as rodas. As especificações do módulo L298N encontra-se abaixo:
+
+I.	Chip: L298N
+II.	Tensão Lógica: 5V
+III.	Corrente Lógica: 0 mA - 36 mA
+IV.	Temperatura de funcionamento: -20 C a +135 C
+V.	Drive Voltage: 5V-35V
+VI.	Drive current: 2A (MAX para uma ponte H)
+VII.	Máxima Potência: 25W
+VIII.	Dimensão: 43x43x27mm
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/ponteH.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
+
+A conexão com o Raspberry Pi e os motores pode ser demonstrado pela figura Y. O terra do L298N é comum com o Raspberry, todavia necessita de uma alimentação externa, no caso 9V. Escolhe-se quatro pinos para serem ligados da ponte H ao Raspberry Pi, os mesmo pinos são definidos como saída no código, a figura Y ilustra a conexão de apenas dois pinos que saem da ponte H e fazem a conexão no Raspberry Pi. Controla-se as velocidades dos motores definindo a frequência do PWM e através do duty cycle é definido a porcentagem do tempo total que os motores estão na posição de trabalho. Utilizando a tabela X como referência, é possível definir o sentido dos motores e sua ação colocando os pinos em HIGH ou LOW  dependendo da fonte da alimentação. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/esquematico_componentes.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/tabela_ponte_H_2.eps}
+    \caption{}
+    \label{fig:catia01}
+\end{figure}
 
 \subsection{Aplicativo}
 O aplicativo de controle do robô será implementada para o sistema operacional Android usando a linguagem de programação Java. A versão mínima do SDK será a 8 e a versão alvo será a 23. Por tanto as versões do SO suportadas serão da 2.2 (Froyo) até a 6.0 (Marshmallow).
@@ -179,7 +334,7 @@ As instruções estarão em arquivo JSON, criado no java a partir de JSONObject.
 
 Os dados que esse arquivo irá enviar ao Raspberry Pi serão:
 \begin{itemize}
-\item [IDENTIFICADOR] Comando/instrução: comando ou instrução para o robô, por exemplo vire a direita.
+	\item Comando/instrução: comando ou instrução para o robô, por exemplo vire a direita.
 \end{itemize}
 
 Dentro de cada comando/instrução os seguintes campos estão presentes:
