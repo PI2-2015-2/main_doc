@@ -150,11 +150,16 @@ na parte superior do carrinho, eixos e parte inferior fixa (parte que não se mo
     \label{fig:von100}
 \end{figure}
 
-Como podemos ver o valor máximo da deformação é da ordem de 10e-5m o que significa que nessas condições não ocorre uma deformação expressiva no carrinho. Os valores da tensão de Von Mises não apresentam valores que possam oferecer um real risco a integridade do material pois apresentam valores da ordem de 10e3 menores que o valor da tensão de ruptura do material.
+Como podemos ver o valor máximo da deformação é da ordem de 10e-5m o que significa que nessas condições não ocorre uma deformação
+expressiva no carrinho. Os valores da tensão de Von Mises não apresentam valores que possam oferecer um real risco a integridade do
+material pois apresentam valores da ordem de 10e3 menores que o valor da tensão de ruptura do material.
  
-Choque com obstáculos: A velocidade do carrinho é relativamente baixa, em um impacto a magnitude das forças envolvidas são bem menores do que a magnitude das forças atuando na queda, como a simulação da queda validou a estrutura do carrinho estendemos os resultados para a análise de colisões e afirmamos que a estrutura desenvolvida está apta a colidir nas condições normais de operação do carrinho.
+Choque com obstáculos: A velocidade do carrinho é relativamente baixa, em um impacto a magnitude das forças envolvidas são bem menores
+do que a magnitude das forças atuando na queda, como a simulação da queda validou a estrutura do carrinho estendemos os resultados para
+a análise de colisões e afirmamos que a estrutura desenvolvida está apta a colidir nas condições normais de operação do carrinho.
  
-Como a estrutura desenvolvida não apresentou problemas em nenhum dos casos simulado, podemos afirmar que a estrutura cumpre os requisitos do projeto e portanto o seu uso é valido.
+Como a estrutura desenvolvida não apresentou problemas em nenhum dos casos simulado, podemos afirmar que a estrutura cumpre os requisitos
+do projeto e portanto o seu uso é valido.
 
 \subsection{Atuadores}
 
@@ -217,15 +222,33 @@ O princípio de usar esteiras neste carrinho é que este poderá passar por loca
 
 \section{Visão e Controle e Processamento}
 
-Esta seção mostra os itens relacionados ao controle e processamento dos dados de comunicação do sistema. O sistema, em uma visão ampla,
-é dividido em dois subsistemas:
+Esta seção mostra os itens relacionados ao controle e processamento dos dados de comunicação do sistema. O sistema, em uma visão ampla
+(figura \ref{fig:overview_down}), é dividido em dois subsistemas:
 
 \begin{itemize}
 \item Inserido no \textbf{raspberry}, responsável por realizar a interpretação e execução do conjunto de instrução do programa;
-\item Inserido no aparelho mobile, responsável pela construção dos programas contendo os conjuntos de instruções;
+\item Inserido no aparelho \textbf{Android}, responsável pela construção dos programas contendo os conjuntos de instruções;
 \end{itemize}
 
-Segue um diagrama de sequência com a visão geral de como o robô Alfa irá funcionar e da comunicação entre os sistemas:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figuras/overview_down.eps}
+    \caption{Visão geral do sistema e a sua comunicação}
+    \label{fig:overview_down}
+\end{figure}
+
+A comunicação ocorre por wifi (mais detalhes nas proximas seções), e a execução das instruções são transferida por uma arquivo JSON.
+A visão operacional do produto (Figura \ref{fig:overview}) se resume em três passos: \textbf{construção} do programa (JSON), \textbf{transferência}
+para o Alfa, \textbf{execução} do programa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/overview.eps}
+    \caption{Visão operacional do sistema}
+    \label{fig:overview}
+\end{figure}
+
+As operações descritas na Figura \ref{fig:sequencia} demonstram a forma como as ações serão executadas em forma de diagrama de sequência
 
 \begin{figure}[H]
     \centering
@@ -236,9 +259,10 @@ Segue um diagrama de sequência com a visão geral de como o robô Alfa irá fun
 
 \subsection{Configuração Wi-Fi}
 
-Para o desenvolvimento da comunicação entre o robô educacional e o aplicativo em dispositivos móveis ANDROID escolheu-se a aplicação da tecnologia de comunicação wi-fi, de modo que é acoplado ao Raspberry Pi um dongle wi-fi (adaptador USB que adiciona funcionalidades à dispositivos, neste caso o adaptador wi-fi permite interação com este tipo de comunicação) para que se possa configurar propriamente o Raspberry Pi como um ponto de acesso de rede (Access Point ou Hotspot).
-
-A tecnologia wi-fi foi escolhida por apresentar parâmetros que condizem com as necessidades do projeto (largura de banda – aproximadamente 22MHz – condizente com o requerido, alcance de aproximadamente 100 metros, menor latência, maior segurança, taxa de transmissão de bits – aproximadamente 600 Mbps - satisfatória para o projeto), outras tecnologias como por exemplo bluetooh, ZigBee e UWB não foram utilizadas por apresentarem características inferiores as desejadas para o projeto, inaplicabilidade ou por capacidade superior a requerida, respectivamente (IECON). Para a configuração do Raspberry Pi como Access Point instalou-se e configurou-se o protocolo de serviço DHCP (onde o mesmo utiliza um modelo cliente-servidor, gerenciando automaticamente os endereços de IP, gateway padrão, máscara de sub-rede e outros parâmetros da conexão dos dispositivos conectados ao access point), bem como instalou-se e configurou-se o Hostapd, que se trata de um programa no “user-space” que é executado em plano de fundo utilizado que realiza a autenticação de servidores e permite a criação de pontos de acesso (WIRELESS WIKI), neste caso, para o controle do robô. 
+Para o desenvolvimento da comunicação entre o robô educacional e o aplicativo em dispositivos móveis ANDROID escolheu-se a aplicação da
+tecnologia de comunicação wi-fi, de modo que é acoplado ao Raspberry Pi um dongle wi-fi (adaptador USB que adiciona funcionalidades à
+dispositivos, neste caso o adaptador wi-fi permite interação com este tipo de comunicação) para que se possa configurar propriamente o
+Raspberry Pi como um ponto de acesso de rede (Access Point ou Hotspot).
 
 \begin{figure}[H]
     \centering
@@ -247,30 +271,74 @@ A tecnologia wi-fi foi escolhida por apresentar parâmetros que condizem com as 
     \label{fig:catia01}
 \end{figure}
 
+A tecnologia wi-fi foi escolhida por apresentar parâmetros que condizem com as necessidades do projeto (largura de banda – aproximadamente
+22MHz – condizente com o requerido, alcance de aproximadamente 100 metros, menor latência, maior segurança, taxa de transmissão de bits –
+aproximadamente 600 Mbps - satisfatória para o projeto), outras tecnologias como por exemplo bluetooh, ZigBee e UWB não foram utilizadas
+por apresentarem características inferiores as desejadas para o projeto, inaplicabilidade ou por capacidade superior a requerida,
+respectivamente (IECON). Para a configuração do Raspberry Pi como Access Point instalou-se e configurou-se o protocolo de serviço DHCP
+(onde o mesmo utiliza um modelo cliente-servidor, gerenciando automaticamente os endereços de IP, gateway padrão, máscara de sub-rede e
+outros parâmetros da conexão dos dispositivos conectados ao access point), bem como instalou-se e configurou-se o Hostapd, que se trata
+de um programa no “user-space” que é executado em plano de fundo utilizado que realiza a autenticação de servidores e permite a criação
+de pontos de acesso (WIRELESS WIKI), neste caso, para o controle do robô. 
+
 \subsection{Alimentação}
 
-Tendo em vista a necessidade de autonomia do robô um dos pontos fundamentais a serem desenvolvidos diz respeito a alimentação do Raspberry Pi. Para este projeto, inicialmente, decidiu-se alimentar o Raspberry Pi utilizando 6 (seis) pilhas do tipo AAA (que geram uma tensão igual a 9V) ou uma bateria 9V utilizando um circuito regulador de tensão implementando-se um CI7805 que fornece uma tensão fixa de saída igual a 5V e corrente máxima de 1.5 A o que é ideal para alimentação do Raspberry Pi (SPARKFUN).
-
-Além disso utiliza-se dois capacitores, um capacitor em paralelo com a entrada do regulador de tensão e um outro capacitor em paralelo com a saída do regulador de tensão afim de evitar variações (ripples) no sinal de alimentação na entrada do regulador e na saída do regulador, respectivamente. É importante mencionar a implementação dos diodos para proteção contra correntes de polarização reversa. Para implantação deste circuito buscou-se a solução mais simples com melhor eficiência, atendendo os requisitos do projeto.
+Tendo em vista a necessidade de autonomia do robô um dos pontos fundamentais a serem desenvolvidos diz respeito a alimentação do
+Raspberry Pi. Para este projeto, inicialmente, decidiu-se alimentar o Raspberry Pi utilizando 6 (seis) pilhas do tipo AAA (que geram
+uma tensão igual a 9V) ou uma bateria 9V utilizando um circuito regulador de tensão implementando-se um CI7805 que fornece uma tensão
+fixa de saída igual a 5V e corrente máxima de 1.5 A o que é ideal para alimentação do Raspberry Pi (SPARKFUN).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/esquematico_regulador.eps}
     \caption{Circuito regulador de tensão proposto para alimentação do Raspberry Pi}
-    \label{fig:catia01}
+    \label{fig:esquematico_regulador}
 \end{figure}
+
+Além disso utiliza-se dois capacitores, um capacitor em paralelo com a entrada do regulador de tensão e um outro capacitor em paralelo com a saída do regulador de tensão afim de evitar variações (ripples) no sinal de alimentação na entrada do regulador e na saída do regulador, respectivamente. É importante mencionar a implementação dos diodos para proteção contra correntes de polarização reversa. Para implantação deste circuito buscou-se a solução mais simples com melhor eficiência, atendendo os requisitos do projeto.
+
+\subsection{Ssitema de Locomoção}
+
+O ambiente de trabalho de um robô móvel é a característica que mais impõe restrições sobre o seu sistema de locomoção, portanto estes
+precisam se adaptar ao seu meio físico quando são projetados. Os mecanismos de locomoção dos robôs móveis são adaptados de acordo com
+o seu ambiente de trabalho. Os robôs móveis podem apresentar a capacidade de andar, saltar, correr, arrastar, deslizar, nadar, voar
+e rolar \cite{secchi:2008}.
+
+O tipo de locomoção do robô móvel é um fator determinante no seu comportamento, definindo a sua interação com o ambiente no qual
+este se locomove. A estabilidade estática e dinâmica dos robôs móveis está ligada ao número e configuração dos pontos de contanto,
+as características de atrito, ao centro de gravidade e a inclinação do terreno \cite{silva:2010}.
+
+Segundo \citeonline{secchi:2008}, o ambiente de trabalho dos robôs móveis são agrupados segundo a área de trabalho e segundo os objetos
+presentes no ambiente. Segundo a área de trabalho, o ambiente pode ser interior ou exterior. O ambiente é interior quando a sua
+área de operação é definida por paredes e tetos e exterior quando está área de operação não é delimitada. Segundo os objetos
+presentes no ambiente do robô, este pode ser classificado em estruturado ou não-estruturado.
+
+O ambiente é estruturado quando os objetos presentes no meio são estáticos, ou seja, não apresentam mudança na sua forma, nem na
+sua posição apresentando características particulares permitindo associar a estes uma forma geométrica conhecida, sendo capaz de
+distingui-los de outros objetos. O ambiente e não-estruturado quando o entorno é dinâmico, ou seja, muda com o decorrer do
+tempo, sendo tais mudanças imprevisíveis e a determinação das características físicas são inviáveis \cite{secchi:2008}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/locomocao.eps}
+    \caption{Tipos de Sistemas de locomoção de um robo móvel.}
+    \label{fig:locomocao}
+\end{figure}
+
+Segundo \citeonline{pieri:2002}, o ambiente de trabalho de um robô móvel pode ser aéreo, aquático ou terrestre. A classe de robôs
+terrestres pode ser dividida em três: com rodas, com esteiras ou com pernas, como pode ser observado na Figura \ref{fig:locomocao}.
 
 \subsection{Sensoriamento}
 
 Em termos de interação com o ambiente na resposta do robô aos comandos fornecidos pela estrutura lógica de blocos do aplicativo, inicialmente realiza-se o sensoriamento utilizando-se um sensor de ultrassom na análise da distância do robô com relação aos objetos ao seu redor. Em princípio, implementa-se o sensoriamento de distância utilizando o modelo HC-RS04 que apresenta especificações de funcionamento (medição de distância de 2cm a 500cm, resolução de 0.3cm, frequência de 40kHz) e alimentação (5V DC) satisfatórias para a viabilização deste aspecto do projeto (MICROPIK).
 
-Umas das terminações do sensor de ultrassom emite um pulso de duração de 10 microssegundos (pino trig é ativado), o sinal é refletido no objeto mais próximo e retorna para a segunda terminação onde aciona um de seus pinos (echo) sinalizando a chegada do sinal, o período de resposta (processamento) do sensor é igual a 50ms o que não leva a atrasos a serem considerados neste projeto. 
+Umas das terminações do sensor de ultrassom emite um pulso de duração de 10 microssegundos (pino trig é ativado), o sinal é refletido no objeto mais próximo e retorna para a segunda terminação onde aciona um de seus pinos (echo) sinalizando a chegada do sinal, o período de resposta (processamento) do sensor é igual a 50ms o que não leva a atrasos a serem considerados neste projeto.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{figuras/pinos_ultrassom.eps}
     \caption{Sensor de Ultrassom HC-RS04 e respectivos pinos.}
-    \label{fig:catia01}
+    \label{fig:pinos_ultrassom}
 \end{figure}
 
 No que diz respeito a programação deste sensor é importante ressaltar que se deve considerar que o pulso emitido pelo sensor percorre duas vezes a distância entre o robô e o objeto, desta forma deve-se considerar a seguinte fórmula (levando-se em consideração a velocidade do som igual a 340m/s):
@@ -360,6 +428,7 @@ A conexão com o Raspberry Pi e os motores pode ser demonstrado pela figura Y. O
 \end{figure}
 
 \subsection{Aplicativo}
+
 O aplicativo de controle do robô será implementada para o sistema operacional Android usando a linguagem de programação Java. A versão mínima do SDK será a 8 e a versão alvo será a 23. Por tanto as versões do SO suportadas serão da 2.2 (Froyo) até a 6.0 (Marshmallow).
 
 Os métodos que merecem destaque são MyTouchListener() e a função de criação e envio das instruções:
@@ -374,7 +443,7 @@ As instruções estarão em arquivo JSON, criado no java a partir de JSONObject.
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/exemplo_json.eps}
     \caption{Exemplo de Arquivo JSON}
-    \label{fig:catia01}
+    \label{fig:exemplo_json}
 \end{figure}
 
 Os dados que esse arquivo irá enviar ao Raspberry Pi serão:
@@ -391,3 +460,9 @@ Dentro de cada comando/instrução os seguintes campos estão presentes:
 \end{itemize}
 
 Os outros blocos de instrução desejáveis na aplicação, a saber o de obstáculo para introdução do conceito das estruturas de condição e os círculos para introduzir os conceitos de laços de repetição ainda estão em desenvolvimento.
+
+\subsection{Prototipação}
+
+Em vista da questão de atratividade do aplicativo para despertar interesse nas crianças, a interfece gráfica do aplicativo contém elementos
+coloridos e com uma distribuição mais simples possível para realizar as operações. Com isso foi realizado práticas de prototipação para construção
+de um modelo de interação.
