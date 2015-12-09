@@ -47,14 +47,14 @@ possui propriedades físicas bastante semelhantes ao polietileno e embora seja m
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figuras/pp_HDPE.eps}
+    \includegraphics[width=0.5\textwidth]{figuras/pp_HDPE.eps}
     \caption{Propriedades do HDPE}
     \label{fig:pp_HDPE}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figuras/pp_aluminio.eps}
+    \includegraphics[width=0.8\textwidth]{figuras/pp_aluminio.eps}
     \caption{Propriedades do Alumínio CAST 7000}
     \label{fig:pp_aluminio}
 \end{figure}
@@ -62,7 +62,7 @@ possui propriedades físicas bastante semelhantes ao polietileno e embora seja m
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figuras/pp_MDF.eps}
+    \includegraphics[width=0.5\textwidth]{figuras/pp_MDF.eps}
     \caption{Propriedades do MDF}
     \label{fig:pp_MDF}
 \end{figure}
@@ -76,23 +76,71 @@ Para fazer a modelagem do carrinho utilizou-se o software CATIA V5-R16, a escolh
 conhecimento prévio das suas ferramentas pelos integrantes do grupo, todas as peças foram desenhadas no Part Design e unidas
 no Assembly, nessa etapa também se coloca os materiais de cada componente. Base de movimentação:
 
->>>>>> IMAGEN <<<<<<<<<
-Vista Inferior
->>>>>> IMAGEN <<<<<<<<<
-Vista Superior
->>>>>> IMAGEN <<<<<<<<<
-Vista Cobertura
->>>>>> IMAGEN <<<<<<<<<
-Suporte para os Motores
->>>>>> IMAGEN <<<<<<<<<
-Vista Encaixe para os motores
->>>>>> IMAGEN <<<<<<<<<
-Vista Tampa
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/base.eps}
+    \caption{Base de Movimentação}
+    \label{fig:base}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/inferior.eps}
+    \caption{Parte Inferior}
+    \label{fig:inferior}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/superior.eps}
+    \caption{Parte Superior}
+    \label{fig:superior}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/cobertura.eps}
+    \caption{Cobertura}
+    \label{fig:cobertura}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/sp_motor.eps}
+    \caption{Suporte para os motores}
+    \label{fig:sp_motor}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/en_motor.eps}
+    \caption{Encaixe para os motores}
+    \label{fig:en_motor}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/tampa.eps}
+    \caption{Tampa}
+    \label{fig:tampa}
+\end{figure}
 
 A base de movimentação serve para alocar a maioria dos componentes eletrônicos do robô, bem como o sistema de movimentação do
 mesmo. As paredes inferior e superior servem para proteger os equipamentos eletrônicos e alocar o sensor de ultrassom, a cobertura
 e a tampa servem para fechar a estrutura e obter a geometria desejada, bem como para a adição de alguns efeitos como LED’s e desenhos
 de modo a tornar o carrinho mais atrativo para as crianças.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/alfa_concept.eps}
+    \caption{Conceito da estrutura final}
+    \label{fig:alfa_concept}
+\end{figure}
 
 \subsubsection{Analise estrutural}
 
@@ -460,10 +508,13 @@ implementação do sensor de ultrassom a seguir:
 
 O código referente à programação do sensor de distância ultrassom, em linguagem Python, está em Apêndice a este relatório.
 
-\subsection{Comunicação Robô}
+\subsection{Comunicação Robô-Aplicativo}
 
-A comunicação entre o robô e o aplicativo mobile foi realizada através de uma comunicação do tipo Cliente/Servidor utilizando a API de Sockets em Python, onde o servidor foi implementado no Raspberry PI, e o cliente foi configurado no aplicativo. Foi utilizado o protocolo TCP/IP na realização da comunicação, esse protocolo foi utilizado por ser atualmente o mais completo e aceito protocolo disponível, além de todos os sistemas operacionais modernos oferecerem suporte para o mesmo. Além disso, o protocolo TCP/IP é do tipo \textit{stream}, o que estabelece algumas características de transmissão, como confiabilidade, ordem, controle de fluxo e bidirecionalidade.
-
+A comunicação entre o robô e o aplicativo mobile foi realizada através de uma comunicação do tipo Cliente/Servidor utilizando a
+API de Sockets em Python, onde o servidor foi implementado no Raspberry PI, e o cliente foi configurado no aplicativo. Foi utilizado
+o protocolo TCP/IP na realização da comunicação, esse protocolo foi utilizado por ser atualmente o mais completo e aceito protocolo
+disponível, além de todos os sistemas operacionais modernos oferecerem suporte para o mesmo. Além disso, o protocolo TCP/IP é do tipo 
+textit{stream}, o que estabelece algumas características de transmissão, como confiabilidade, ordem, controle de fluxo e bidirecionalidade.
 A seguir tem-se um diagrama ilustrando as funções utilizadas na implementação da comunicação cliente servidor utilizando o protocolo TCP/IP:
 
 \begin{figure}[H]
@@ -488,9 +539,14 @@ também por sincronizar a inicialização e rotação dos mesmos.
 
 \subsection{Ponte H}
 
-A ponte H é um circuito designado para controlar o sentido e a velocidade dos motores DC do robô. Por ser um circuito do tipo chopper E, o mesmo circuito converte corrente contínua fixa em uma tensão de corrente contínua variável. Dessa forma, pode-se determinar o sentido da corrente e a polaridade da tensão. A ponte H é feita de componentes como Switches, Relays e Mosfets.
+A ponte H é um circuito designado para controlar o sentido e a velocidade dos motores DC do robô. Por ser um circuito do tipo chopper E,
+o mesmo circuito converte corrente contínua fixa em uma tensão de corrente contínua variável. Dessa forma, pode-se determinar o sentido da
+corrente e a polaridade da tensão. A ponte H é feita de componentes como Switches, Relays e Mosfets.
 
-A figura abaixo mostra uma ponte H módulo L298N que foi utilizada no projeto. Este dispositivo foi utilizado considerando sua versatilidade e simplicidade de implementação, além de sua funcionalidade, como o controle de vários motores simultaneamente. Uma outra vantagem é o fato do L298N poder controlar as altas correntes dos motores, ela literalmente faz uma ‘ponte’ entre as correntes baixas do circuito lógico do Raspberry PI e dos motores DC utilizados para movimentar as rodas. As especificações do módulo L298N encontram-se abaixo:
+A figura abaixo mostra uma ponte H módulo L298N que foi utilizada no projeto. Este dispositivo foi utilizado considerando sua versatilidade
+e simplicidade de implementação, além de sua funcionalidade, como o controle de vários motores simultaneamente. Uma outra vantagem é o fato
+do L298N poder controlar as altas correntes dos motores, ela literalmente faz uma ‘ponte’ entre as correntes baixas do circuito lógico do
+Raspberry PI e dos motores DC utilizados para movimentar as rodas. As especificações do módulo L298N encontram-se abaixo:
 
 \begin{itemize}
     \item I. Chip: L298N
@@ -531,17 +587,80 @@ referência, é possível definir o sentido dos motores e sua ação colocando o
     \label{fig:tabela_ponte_H_2}
 \end{figure}
 
+\subsubsection{Alimentação da Ponte-H}
+
+Para a alimentação da ponte H propõe-se duas possíveis aplicações, a primeira proposta é a de um elevador de tensão, de tal forma que
+elevasse a tensão de saída da bateria utilizada (5 Volts) para 12 V (que é a tensão desejada para a alimentação da ponte H). Dessa maneira,
+implementou-se um circuito como o demonstrado na Figura \ref{fig:elevador}, a partir de um circuito integrado elevador de tensão DC-DC MC34063, este
+circuito integrado apresenta uma vasta faixa de operação de tensão de entrada (de 3V a 40V), apresenta frequência de operação de 100 kHz,
+apresenta baixa corrente de standby, além de fornecer um máximo de até 1.5A de corrente de saída (o que é suficiente para o controle
+do motores através da ponte H)\cite{kuhl:2013}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/elevador.eps}
+    \caption{Circuito Elevador de Tensão Implementando-se o MC34063.}
+    \label{fig:elevador}
+\end{figure}
+
+Os componentes dos circuitos foram escolhidos de maneira a satisfazer os parâmetros de alimentação desejados para a ponte H
+ \cite{kuhl:2013}. É importante ressaltar alguns aspectos deste circuito: os resistores são responsáveis pelo valor
+de tensão obtido na saída de modo a regular-se  a obter a tensão de saída desejada, o diodo utilizado é do tipo \textit{Schottky Barrier} (por
+apresentar baixa queda tensão e rápida resposta de transição entre polarização direta e inversa), utilizou-se um indutor toroidal de
+núcleo de ferrite por apresentar características como baixos níveis de perda e estabilidade em níveis altos de temperatura.
+Uma segunda proposta é a de um regulador de tensão de 12V para uma entrada de alimentação de duas baterias de 9V em série (que resultariam
+em 18V). Então, nesta proposta o principal elemento para implementação é um regulador de tensão LM7812, aplicado juntamente a alguns
+capacitores (utilizados como filtros de possíveis ripples no sinal)e um diodo de proteção, como demonstrado na Figura \ref{fig:regulador}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/regulador.eps}
+    \caption{Circuito Regulador de Tensão Implementando-se LM7812.}
+    \label{fig:regulador}
+\end{figure}
+
+Tendo em vista o design do produto implementou-se LEDs do tipo RGB (vermelho, verde e azul do inglês red, green and blue) de tal forma
+que os LEDs assumam a cor que diz respeito a cor do bloco escolhido no aplicativo para o controle, a  Figura 3.2.5c apresenta a estrutura
+de LED do tipo RGB (que basicamente se comporta como três LEDs com cátodo em comum). Sendo assim, cada um dos ânodos dos LEDs são
+conectados a um pino diferente do Raspberry Pi para que se controle individualmente cada uma das cores.
+
+Considerando uma corrente de limiar de 4mA para alimentar o LED e uma queda de tensão de 1.89V, 2.65V e 2.83V para os LEDs vermelho,
+verde e azul (respectivamente) utiliza-se equivalências de resistores de 330ohm em paralelo para a queda de tensão em cada uma das resistências
+equivalentes (a queda de tensão em cada uma das cores do LED RGB somada a queda de tensão sobre a resistência conectada ao seu ânodo deve
+ser aproximadamente igual a 3.3V, que é a tensão de alimentação no cátodo comum) , é importante mencionar que para
+que se use cada uma das cores deve-se configurar o pino no Raspberry Pi correspondente a cor desejada para nível lógico “baixo” (ou 0
+Volts) permitindo a polarização positiva, e ainda ressalta-se que serão implementados três LEDs RGB para intensificar o brilho e as cores.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/led.eps}
+    \caption{Estrutura Led RGB Cátodo Comum.}
+    \label{fig:led}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/esquematico_led.eps}
+    \caption{Esquemático Geral das Ligações para um LED RGB.}
+    \label{fig:esquematico_led}
+\end{figure}
+
+Como para a implementação do sensor de ultrassom, também desenvolveu-se um código de programação para o controle dos LEDs, o código
+em Python está em apêndice a este documento com o título (Apêndice B). Os datasheets utilizados na confexão dos circuitos estão em anexo.
+
+
 \subsection{Aplicativo}
 
-O aplicativo de controle do robô será implementada para o sistema operacional Android usando a linguagem de programação Java. A versão mínima do SDK será a 8 e a versão alvo será a 23. Por tanto as versões do SO suportadas serão da 2.2 (Froyo) até a 6.0 (Marshmallow).
+O aplicativo de controle do robô será implementado para o sistema operacional Android usando a linguagem de programação Java. A versão mínima do
+SDK será a 8 e a versão alvo será a 23. Por tanto as versões do SO suportadas serão da 2.2 (\textit{Froyo}) até a 6.0 (\textit{Marshmallow}).
 
-Os métodos que merecem destaque são MyTouchListener() e a função de criação e envio das instruções:
+Os métodos que merecem destaque são \textit{MyTouchListener()} e a função de criação e envio das instruções:
 \begin{itemize}
 \item MyTouchListener(): responsável pelo monitoramento dos toques na tela do usuário. Implementada a partir da interface View.OnTouchListener
 \item Função de criação e envio das instruções: após o usuário ordenar as instruções para o robô, essa função irá criar um arquivo JSON e enviar as instruções pela conexão WiFi via Socket.
 \end{itemize}
 
-As instruções estarão em arquivo JSON, criado no java a partir de JSONObject. Um exemplo de arquivo com as instruções é mostrado no código abaixo:
+As instruções estarão em arquivo JSON, criado no código Java a partir do JSONObject. Um exemplo de arquivo com as instruções é mostrado no coódigo abaixo:
 
 \lstinputlisting{code/instruction.json}
 
