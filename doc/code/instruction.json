@@ -1,0 +1,30 @@
+{
+  "move": {
+    "duration": 1,
+    "power": 50,
+    "orientation": 1
+  },
+
+  "loop": {
+    "instructions": 2,
+    "loops": 5
+  },
+
+  "turn": {
+    "degree": 90,
+    "power": 100,
+    "direction": "RIGHT"
+  },
+
+  "turn": {
+    "degree": 90,
+    "power": 100,
+    "direction": "RIGHT"
+  },
+  
+  "move": {
+    "duration": 1,
+    "power": 50,
+    "orientation": 1
+  },
+}

@@ -214,11 +214,6 @@ A bateria escolhida é a KMASHI MP816, por apresentar uma capacidade nominal de 
 
 Ao se manter uma tensão constante de 5V e 2A (totalizando 10W de potência nominal para recarga) a bateria necessitou de em média 3 horas para atingir uma carga satisfatória (90\% da carga), em uma alimentação forçada de 4 horas, o nível de carga subiu pouco (em torno de 5\%) comparado às 3 horas iniciais. Logo o sistema possui um tempo de recarga para valores satisfatórios de 3 horas quando se utiliza uma fonte D.C. de 10 watts de potência. Para a descarga, o sistema apresenta um valor um pouco inferior. 2 horas e 50 minutos de autonomia em média, considerando que a carga será constante de 10,5 watts.
 
-\subsection{Giro e Curvas}
-
-Quando for enviado o sinal para que o carrinho gire para a direita e para a esquerda, um dos motores será desligado assim com a força do único motor ligado as duas rodas frontais acompanham a roda que está sendo estimulada pelo motor e auxiliam para que o robô complete o giro, dessa forma obedecendo o comando, (o motor que será desligado dependerá do sentido que o robô irá se mover.
- 
-O princípio de usar esteiras neste carrinho é que este poderá passar por locais em que o piso não é plano, sendo assim para o bom funcionamento das mesmas o carrinho terá dois motores  para mover as esteiras da direita e da esquerda independentes. 
 
 \section{Visão e Controle e Processamento}
 
@@ -297,7 +292,7 @@ fixa de saída igual a 5V e corrente máxima de 1.5 A o que é ideal para alimen
 
 Além disso utiliza-se dois capacitores, um capacitor em paralelo com a entrada do regulador de tensão e um outro capacitor em paralelo com a saída do regulador de tensão afim de evitar variações (ripples) no sinal de alimentação na entrada do regulador e na saída do regulador, respectivamente. É importante mencionar a implementação dos diodos para proteção contra correntes de polarização reversa. Para implantação deste circuito buscou-se a solução mais simples com melhor eficiência, atendendo os requisitos do projeto.
 
-\subsection{Ssitema de Locomoção}
+\subsection{Sitema de Locomoção}
 
 O ambiente de trabalho de um robô móvel é a característica que mais impõe restrições sobre o seu sistema de locomoção, portanto estes
 precisam se adaptar ao seu meio físico quando são projetados. Os mecanismos de locomoção dos robôs móveis são adaptados de acordo com
@@ -437,14 +432,9 @@ Os métodos que merecem destaque são MyTouchListener() e a função de criaçã
 \item Função de criação e envio das instruções: após o usuário ordenar as instruções para o robô, essa função irá criar um arquivo JSON e enviar as instruções pela conexão WiFi via Socket.
 \end{itemize}
 
-As instruções estarão em arquivo JSON, criado no java a partir de JSONObject. Um exemplo de arquivo com as instruções é mostrado na figura abaixo:
+As instruções estarão em arquivo JSON, criado no java a partir de JSONObject. Um exemplo de arquivo com as instruções é mostrado no código abaixo:
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{figuras/exemplo_json.eps}
-    \caption{Exemplo de Arquivo JSON}
-    \label{fig:exemplo_json}
-\end{figure}
+\lstinputlisting{code/instruction.json}
 
 Os dados que esse arquivo irá enviar ao Raspberry Pi serão:
 \begin{itemize}
