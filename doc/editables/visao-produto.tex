@@ -251,9 +251,6 @@ fatores apresentada acima. A tabela (Figura fig:tensao) apresentado as especific
     \label{fig:motor}
 \end{figure}
 
->>>>>> IMAGEN <<<<<<<<<
-Desenho Técnico do Motor. Fonte: Amazon S3 Web Services
-
 \subsection{Alimentação}
 
 A alimentação dos componentes será feita por intermédio da placa Raspberry pi, o levantamento das necessidades energéticas delimitou
@@ -349,19 +346,19 @@ em ambientes não estruturados \cite{pieri:2002} \cite{siegwart:2002}.
 O tipo de roda e a disposição destas na estrutura mecânica influenciam na sua mobilidade e no seu comportamento cinemático, uma vez
 que as rodas podem impor restrições ou permitir o movimento da estrutura em determinadas direções. As rodas convencionais e a sueca
 (swedish wheel) são basicamente as duas classes de rodas (SECCHI, 2008). As rodas convencionais por sua vez são divididas em: roda fixa,
-roda orientável centralizada e roda castor como pode ser observado na Figura \ref{roda}.
+roda orientável centralizada e roda castor como pode ser observado na Figura \ref{fig:roda}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{figuras/roda.eps}
+    \includegraphics[width=0.9\textwidth]{figuras/roda.eps}
     \caption{Tipos de rodas. (a) Roda fixa. (b) Roda orientável centralizada. (c) Roda castor. Fonte: SECCHI, 2008.}
     \label{fig:roda}
 \end{figure}
 
-As rodas fixas têm o seu eixo fixado na estrutura do robô como pode ser observado na Figura \ref{roda}.a. As rodas orientáveis centralizada
-apresentam rotação ao redor do seu eixo vertical que passa através do centro da roda, como pode ser observado na Figura \ref{roda}.b. As
+As rodas fixas têm o seu eixo fixado na estrutura do robô como pode ser observado na Figura \ref{fig:roda}.a. As rodas orientáveis centralizada
+apresentam rotação ao redor do seu eixo vertical que passa através do centro da roda, como pode ser observado na Figura \ref{fig:roda}.b. As
 rodas castor são orientada com relação à estrutura de tal modo que o seu eixo vertical não passa através do centro da roda, como
-pode ser observado na Figura \ref{roda}.c \cite{secchi:2008}. 
+pode ser observado na Figura \ref{fig:roda}.c \cite{secchi:2008}. 
 
 O arranjo e a geometria das rodas na estrutura influenciam na escolha do tipo de roda. As características fundamentais a serem
 consideradas nessa escolha são: a estabilidade, manobridade e controlabilidade. A Figura T fornece uma visão geral das configurações
@@ -369,7 +366,7 @@ de rodas ordenadas por número, apresentando desde uma seleção particular dos 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{figuras/arranjos_roda.eps}
+    \includegraphics[width=0.9\textwidth]{figuras/arranjos_roda.eps}
     \caption{Tipos de arranjos de rodas possíveis para robôs móveis. Fonte: SIEGWART \& NOURBAKHSH, 2004}
     \label{fig:arranjo_roda}
 \end{figure}
@@ -407,10 +404,21 @@ Esta seção mostra os itens relacionados ao controle e processamento dos dados 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{figuras/overview_down.eps}
+    \includegraphics[width=0.7\textwidth]{figuras/overview_down.eps}
     \caption{Visão geral do sistema e a sua comunicação}
     \label{fig:overview_down}
 \end{figure}
+
+Uma breve descrição para cada uma dos módulos:
+\begin{itemize}
+    \item \textbf{Server}: responsável por receber os programas enviados pelo aplicativo Android;
+    \item \textbf{Interpretador}: responsável por interpretar os dados contidos no programa recebido;
+    \item \textbf{Motor e Ultrassom}: representa os atuadores que executarão os comandos interpretados pelo programa. Ainda existe outros
+    possíveis atuadores que poderão ser acoplados ao Rapberry;
+    \item \textbf{Connection}: garante a conexão entre o servidor e o aplicativo. Responsável por enviar os programas para o servidor;
+    \item \textbf{Activity}: operações de interação com o usuário. Camada de apresentação e coleta de dados do usuário;
+    \item \textbf{Model}: modelos representativos da aplicação.
+\end{itemize}
 
 A comunicação ocorre por wifi (mais detalhes nas proximas seções), e a execução das instruções são transferida por uma arquivo JSON.
 A visão operacional do produto (Figura \ref{fig:overview}) se resume em três passos: \textbf{construção} do programa (JSON), \textbf{transferência}
@@ -418,7 +426,7 @@ para o Alfa, \textbf{execução} do programa.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figuras/overview.eps}
+    \includegraphics[width=0.7\textwidth]{figuras/overview.eps}
     \caption{Visão operacional do sistema}
     \label{fig:overview}
 \end{figure}
@@ -598,7 +606,7 @@ do motores através da ponte H)\cite{kuhl:2013}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figuras/elevador.eps}
+    \includegraphics[width=0.9\textwidth]{figuras/elevador.eps}
     \caption{Circuito Elevador de Tensão Implementando-se o MC34063.}
     \label{fig:elevador}
 \end{figure}
@@ -614,7 +622,7 @@ capacitores (utilizados como filtros de possíveis ripples no sinal)e um diodo d
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figuras/regulador.eps}
+    \includegraphics[width=0.9\textwidth]{figuras/regulador.eps}
     \caption{Circuito Regulador de Tensão Implementando-se LM7812.}
     \label{fig:regulador}
 \end{figure}
@@ -633,14 +641,14 @@ Volts) permitindo a polarização positiva, e ainda ressalta-se que serão imple
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figuras/led.eps}
+    \includegraphics[width=0.4\textwidth]{figuras/led.eps}
     \caption{Estrutura Led RGB Cátodo Comum.}
     \label{fig:led}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figuras/esquematico_led.eps}
+    \includegraphics[width=0.5\textwidth]{figuras/esquematico_led.eps}
     \caption{Esquemático Geral das Ligações para um LED RGB.}
     \label{fig:esquematico_led}
 \end{figure}
@@ -679,8 +687,104 @@ Dentro de cada comando/instrução os seguintes campos estão presentes:
 
 Os outros blocos de instrução desejáveis na aplicação, a saber o de obstáculo para introdução do conceito das estruturas de condição e os círculos para introduzir os conceitos de laços de repetição ainda estão em desenvolvimento.
 
-\subsection{Prototipação}
+\subsubsection{Prototipação}
 
 Em vista da questão de atratividade do aplicativo para despertar interesse nas crianças, a interfece gráfica do aplicativo contém elementos
 coloridos e com uma distribuição mais simples possível para realizar as operações. Com isso foi realizado práticas de prototipação para construção
 de um modelo de interação.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figuras/splash_screen.eps}
+    \caption{\textit{Splash Screen} - Tela de Abertura do Aplicativo.}
+    \label{fig:splash_screen}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figuras/main_menu.eps}
+    \caption{Tela Principal - \textit{Menu}.}
+    \label{fig:main_menu}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figuras/instruction.eps}
+    \caption{Tela Para Construção dos Conjuntos de Instruções.}
+    \label{fig:instruction}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figuras/save_form.eps}
+    \caption{Formulário para Salvar Instruções.}
+    \label{fig:save_form}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figuras/list_of_programs.eps}
+    \caption{Lista com as Instruções (Programas) Criadas.}
+    \label{fig:list_of_programs}
+\end{figure}
+
+\subsubsection{Arquitetura do Aplicativo}
+
+A arquitetura do aplicativo segue uma adaptação do modelo MVC. A imagem com o Diagrama de Pacotes mostra uma macro visão desta adaptação. No pacote chamado de “\textit{Activity}” estão dispostas as 5 principais telas da aplicação: de introdução (\textit{SplashActivity}), menu inicial (\textit{AlfaActivity}), tela de inserção dos conjuntos de blocos de instruições (\textit{SequenceActivity}), outra que mostra um pequeno texto “sobre” a aplicação (\textit{AboutActivity}) e uma outra tela para listagem dos “programas” criados pelo usuário (\textit{ProgramsActivity}).
+
+As classes de modelo estão no pacote “Model” e são: Block e Sequence. Suas atribuições são as generalizações que é o bloco de instrução e as sequencia destes blocos. Os atributos comuns a todos esses blocos e sequências estão neste pacote.
+
+No pacote “Connect”, duas classes estão presentes e suas responsabilidades são: conexão com o servidor no Raspberry Pi (\textit{Connector}); e envio do arquivo JSON criado (\textit{JSONSender}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figuras/package.eps}
+    \caption{Diagrama de Pacotes do Aplicativo}
+    \label{fig:package}
+\end{figure}
+
+\subsubsection{Organização do Repositório de Código}
+
+Para execução desta parte do trabalho (construção do aplicativo), foi utilizado o sistema de versionamento GIT. O serviço escolhido para
+armazenamento remoto foi o Github (disponível em \url{https://github.com/PI2-2015-2}). Foi criado uma “organização” nesta ferramenta para centralização
+dos códigos presentes no servidor webservice Python utilizado no Raspberry, do aplicativo Android e para a documentação dos relatórios escritos em LaTeX.
+
+Quanto à organização de branches destes repositórios, foi proposta a separação por abordagens da construção destas aplicações. Estas abordagens
+para o repositório do aplicativo (robot-app) foram: estruturação básica; front-end e design; conexão com o servidor via WiFi e Socket; contrução
+do arquivo JSON e envio deste arquivo; remoção dos blocos adicionados pelo usuário; salvamento dos conjuntos de instruções; e “remontagem“ dos
+conjuntos salvos. Até a finalização deste documento, os branches presentes no repositório são: dev, prod, rebot\_layout, block\_remove,
+file\_transfer, reconnect, new\_design e test.
+
+No repositório do servidor Python (server\_side), os branches seguem um padrão utilizado por muitas equipes de desenvolvimento, master e
+development, pois para as contribuições não foi necessário dividir as tarefas entre os alunos de Engenharia de Software, além do conhecimento
+prévio do principal integrante resposável por esta parte do sistema. E o repositório para documentação de todo o projeto (main\_doc) possui apenas
+o branch master.
+
+\subsubsection{Servidor Python no Raspberry Pi}
+
+O servidor responsável por atender as requisições de execução dos comandos enviados pelo aplicativo foi implementado utilizando framework do Python SocketServers. Esse framework simplifica o desenvolvimento de servidores de quatro diferentes classes: TCPServer, UDPServer, UnixStreamServer e UnixDatagramServer, como ilustrado na Figura \ref{fig:socket_hierarchy}. A classe de servidor escolhida foi o TCPServer. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/socket_hierarchy.eps}
+    \caption{Diagrama de herança das classes do framework \textit{SocketServer}}
+    \label{fig:socket_hierarchy}
+\end{figure}
+
+Para o servidor ser implementado, foi preciso criar uma classe que estendesse a super classe BaseRequestHandler, presente no framework SocketServer. Essa classe fornece um conjunto de métodos necessários para implementar um socker server.  Essa classe é instanciada com os parâmetros de endereço de host e porta a ser utilizada. Após a instanciação, o servidor fica disponível para requests oriundos do aplicativo.
+
+Quando um request é feito pelo aplicativo, um arquivo no formato JSON é enviado para o servidor, que para tratá-lo, delega a sua interpretação para uma outra classe, a Parser. Esta classe interpreta o conjunto de instruções e invoca a execução das mesmas através da classe ExecInstructions. A classe ExecInstructions executa as instruções utilizando o módulo RPi GPIO utilizando a pinagem da Figura X. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/server_classDiagram.eps}
+    \caption{Diagrama de classes do servidor}
+    \label{fig:server_classDiagram}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/pinagem.eps}
+    \caption{Pinout do Raspberry para execução dos comandos}
+    \label{fig:pinagem}
+\end{figure}
